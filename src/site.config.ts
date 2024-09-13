@@ -2,19 +2,19 @@ import type { SiteConfig } from '@/types'
 import type { AstroExpressiveCodeOptions } from 'astro-expressive-code'
 
 export const siteConfig: SiteConfig = {
-	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
-	author: 'SRLEOM',
-	// Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
-	title: 'astro-theme-resume',
-	// Meta property used as the default description meta property
-	description: 'The official Astro Resume Theme',
-	// HTML lang property, found in src/layouts/Base.astro L:18
-	lang: 'en-GB',
-	// Meta property, found in src/components/BaseHead.astro L:42
-	ogLocale: 'en_GB',
-	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
+	// Author's name for meta tags and OG image
+	author: 'Yashasewi',
+	// Meta title for the page
+	title: 'Resume',
+	// Meta description for the page
+	description: 'Yashasewi Resume',
+	// HTML language attribute for English
+	lang: 'en-IN',
+	// Open Graph locale for English in India
+	ogLocale: 'en_IN',
+	// Date formatting options for English in India
 	date: {
-		locale: 'en-GB',
+		locale: 'en-IN',
 		options: {
 			day: 'numeric',
 			month: 'short',
