@@ -11,6 +11,8 @@ const {
 	subheading,
 	date,
 	imagePath,
+	fullImagePath,
+	marks,
 	altText,
 	imageClass
 } = Astro.props
@@ -19,6 +21,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg
 if (imagePath) {
 	if (!images[imagePath])
 		throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`)
+	if (fullImagePath && !images[fullImagePath])
+		throw new Error(`"${fullImagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`)
 }
 ---
 
@@ -32,10 +36,22 @@ if (imagePath) {
 >
 	{
 		imagePath && (
+			<>
+				<Image
+					src={images[imagePath]()}
+					alt={altText}
+					class={cn('mb-3 hidden md:absolute md:mb-0 md:block', imageClass)}
+					loading='eager'
+				/>
+			</>
+		)
+	}
+	{
+		fullImagePath && (
 			<Image
-				src={images[imagePath]()}
+				src={images[fullImagePath]()}
 				alt={altText}
-				class={cn('mb-3 md:absolute md:mb-0', imageClass)}
+				class={cn('mb-3 md:hidden', imageClass)}
 				loading='eager'
 			/>
 		)
@@ -43,8 +59,12 @@ if (imagePath) {
 	<div class='flex flex-col gap-y-1.5'>
 		<div class='flex flex-col gap-y-0.5'>
 			<h1 class='text-lg font-medium'>{heading}</h1>
-			<h2 class='text-muted-foreground'>{subheading}</h2>
-			<h2 class='text-muted-foreground'>{date}</h2>
+			<span class='flex flex-row justify-between md:flex-row'>
+				<h2 class='text-muted-foreground font-semibold'>{subheading}</h2>
+				{marks && <h2 class='italic font-normal text-muted-foreground'>{marks}</h2>}
+			</span>
+
+			<h2 class='text-muted-foreground italic'>{date}</h2>
 		</div>
 		<slot />
 	</div>
