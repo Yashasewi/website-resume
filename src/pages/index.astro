@@ -10,16 +10,42 @@ import SkillLayout from '../components/SkillLayout.astro'
 import { Image } from 'astro:assets'
 import astro from '../assets/about-astro.png'
 
-import { getAllPosts, sortMDByDate } from '@/utils'
+// import { getAllPosts, sortMDByDate } from '@/utils'
 
-const languages = ['lorem', 'ipsum']
-const frontend = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
-const backend = ['lorem', 'ipsum', 'lorem', 'ipsum']
-const others = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
+const languages = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C/C++', 'Go', 'Zig', 'Rust']
+const frontend = [
+	'React',
+	'Next.js',
+	'Vite',
+	'Lit',
+	'Tailwind CSS',
+	'Redux',
+	'React Router',
+	'Framer Motion',
+	'GSAP',
+	'Astro',
+	'Sass',
+	'Material-UI'
+]
+const backend = [
+	'Node.js',
+	'Express',
+	'NestJS',
+	'Firebase',
+	'Prisma',
+	'Drizzel',
+	'MySQL',
+	'PostgreSQL',
+	'MongoDB',
+	'Django',
+	'Flask',
+	'Drizzel'
+]
+const others = ['Git/Github', 'Docker', 'Figma', 'Linux', 'CI/CD', 'AWS', 'Arch(btw)']
 
-const MAX_POSTS = 10
-const allPosts = await getAllPosts()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+// const MAX_POSTS = 10
+// const allPosts = await getAllPosts()
+// const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
@@ -43,7 +69,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 							></path>
 						</svg>
 					</Label>
-					<Label title='Greater Noida'>
+					<Label title='Delhi'>
 						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='h-5 w-5' slot='icon'
 							><path
 								fill='currentColor'
@@ -51,6 +77,20 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 							></path>
 						</svg>
 					</Label>
+					<Label title='Yashasewi.me' as='a' href='https://www.yashasewi.me/' target='_blank'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 24 24'
+							class='h-5 w-6 text-foreground/75'
+							slot='icon'
+						>
+							<path
+								fill='currentColor'
+								d='M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2'
+							></path>
+						</svg>
+					</Label>
+
 					<Label title='Yashasewi' as='a' href='https://www.github.com/yashasewi/' target='_blank'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
@@ -97,10 +137,11 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
 		<Section title='About'>
 			<p class='text-muted-foreground'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque quia omnis
-				consectetur, voluptas praesentium veniam blanditiis ratione asperiores accusantium laborum
-				odit commodi quis deserunt incidunt et dolor iure ut! Lorem ipsum dolor sit, amet
-				consectetur adipisicing elit. Alias quia, doloribus ut beatae perspiciatis voluptatibus.
+				Passionate software developer with a strong foundation in computer science and hands-on
+				experience in full-stack web development. Skilled in creating responsive and efficient web
+				applications using modern technologies. Committed to continuous learning and
+				problem-solving, with a track record of successful project deliveries and contributions to
+				open-source projects.
 			</p>
 		</Section>
 		<!-- { -->
@@ -199,6 +240,96 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		<Section title='Projects'>
 			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
 				<ProjectCard
+					href='https://befikarestore.in'
+					heading='Befikarestore'
+					subheading='Full Stack E-commerce Platform'
+					imagePath='/src/assets/befikarestore.png'
+					imagePath='/src/assets/coming-soon.png'
+					altText='Befikarestore'
+					class='w-full sm:w-1/2'
+				/>
+				<ProjectCard
+					href='https://github.com/Yashasewi/spotify-portfolio'
+					heading='Spotify Stats'
+					subheading='Music Analytics App'
+					imagePath='/src/assets/spotify-stats.png'
+					imagePath='/src/assets/coming-soon.png'
+					altText='Spotify Stats'
+					class='w-full sm:w-1/2'
+				/>
+			</div>
+		</Section>
+
+		<Section title='Open Source'>
+			<!-- <Card
+				as='a'
+				heading='React Flow'
+				subheading='Contribution to node resizing feature'
+				date='May 2023'
+				imagePath='/src/assets/react-flow.png'
+				imagePath='/src/assets/about-astro.png'
+				altText='React Flow logo'
+				imageClass='h-11 w-auto md:-left-16'
+				href='https://github.com/wbkd/react-flow/pull/2784'
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>
+						Implemented node resizing feature, enhancing the functionality of the React Flow
+						library.
+					</li>
+					<li>
+						Collaborated with maintainers to refine the implementation and ensure compatibility with
+						existing features.
+					</li>
+				</ul>
+			</Card> -->
+			<Card
+				as='a'
+				heading='The Coding Train'
+				subheading='Added dark mode feature to thecodingtrain.com'
+				imagePath='/src/assets/codingtrain.png'
+				altText='Coding Train logo'
+				imageClass='h-10 w-10 md:-left-16 object-contain'
+				href='https://github.com/CodingTrain/thecodingtrain.com/pull/1554'
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>
+						Implemented dark mode using CSS variables and theming classes for improved user
+						experience.
+					</li>
+					<li>
+						Updated existing styles to ensure seamless adaptation to both light and dark themes.
+					</li>
+					<li>
+						Addressed potential issues and collaborated with the team to ensure feature
+						completeness.
+					</li>
+				</ul>
+			</Card>
+			<Card
+				as='a'
+				heading='PearAI'
+				subheading='Responsive design improvements and bug fixes'
+				date='Month Year'
+				imagePath='/src/assets/pear.png'
+				altText='PearAI logo'
+				imageClass='h-11 w-auto md:-left-16'
+				href='https://github.com/trypear/pear-landing-page/pull/193'
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>
+						Enhanced website responsiveness for small devices, improving user experience on mobile
+						and tablet screens.
+					</li>
+					<li>
+						Fixed various bugs and made adjustments to the layout and functionality of the site.
+					</li>
+				</ul>
+			</Card>
+		</Section>
+		<!-- <Section title='Projects'>
+			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
+				<ProjectCard
 					href='https://www.google.com'
 					heading='Consectetur'
 					subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit.'
@@ -215,7 +346,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 					class='w-full sm:w-1/2'
 				/>
 			</div>
-		</Section>
+		</Section> -->
 
 		<Section title='Certifications'>
 			<Card
