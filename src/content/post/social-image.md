@@ -3,7 +3,7 @@ title: "Example OG Social Image"
 publishDate: "27 January 2023"
 description: "An example post for Astro Cactus, detailing how to add a custom social image card in the frontmatter"
 tags: ["example", "blog", "image"]
-ogImage: "https://astro-cactus.chriswilliams.dev/social-card.png"
+ogImage: "/social-card.png"
 ---
 
 ## Adding your own social image to a post
