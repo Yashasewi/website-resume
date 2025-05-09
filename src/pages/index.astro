@@ -10,38 +10,17 @@ import SkillLayout from '../components/SkillLayout.astro'
 import { Image } from 'astro:assets'
 import astro from '../assets/about-astro.png'
 
-// import { getAllPosts, sortMDByDate } from '@/utils'
+// Import data from resume.ts
+import {
+	experience,
+	education,
+	projects,
+	openSource,
+	certifications,
+	skills
+} from '../data/resume.ts'
 
-const languages = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C/C++', 'Go', 'Zig', 'Rust']
-const frontend = [
-	'React',
-	'Next.js',
-	'Vite',
-	'Lit',
-	'Tailwind CSS',
-	'Redux',
-	'React Router',
-	'Framer Motion',
-	'GSAP',
-	'Astro',
-	'Sass',
-	'Material-UI'
-]
-const backend = [
-	'Node.js',
-	'Express',
-	'NestJS',
-	'Firebase',
-	'Prisma',
-	'Drizzel',
-	'MySQL',
-	'PostgreSQL',
-	'MongoDB',
-	'Django',
-	'Flask',
-	'Drizzel'
-]
-const others = ['Git/Github', 'Docker', 'Figma', 'Linux', 'CI/CD', 'AWS', 'Arch(btw)']
+// import { getAllPosts, sortMDByDate } from '@/utils'
 
 // const MAX_POSTS = 10
 // const allPosts = await getAllPosts()
@@ -173,238 +152,111 @@ const others = ['Git/Github', 'Docker', 'Figma', 'Linux', 'CI/CD', 'AWS', 'Arch(
 		<!-- } -->
 
 		<Section title='Experience'>
-			<Card
-				heading='Fenado.ai'
-				subheading='Software Developer'
-				date='Feb 2025 - Current'
-				imagePath='/src/assets/fenado.png'
-				fullImagePath='/src/assets/fenado.png'
-				altText='Fenado Logo'
-				imageClass='h-11 w-auto md:-left-[4.5rem] md:rounded-full'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-
-						<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-					</li>
-				</ul>
-			</Card>
-			<Card
-				heading='Conduent'
-				subheading='Asociate Software Developer'
-				date='Aug 2024 - Feb 2025'
-				imagePath='/src/assets/Conduent_logo.png'
-				fullImagePath='/src/assets/Conduent_logo_full.png'
-				altText='Conduent Logo'
-				imageClass='h-11 w-auto md:-left-[4.5rem] md:rounded-full'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-
-						<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-					</li>
-				</ul>
-			</Card>
-			<Card
-				heading='Datachannel'
-				subheading='Software Developer Intern'
-				date='Oct 2023 - June 2024'
-				imagePath='/src/assets/datachannel.png'
-				fullImagePath='/src/assets/datachannel_full.png'
-				altText='Datachannel logo'
-				imageClass='h-11 w-auto md:-left-[4.5rem] md:rounded-full'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-					</li>
-					<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-				</ul>
-			</Card>
+			{
+				experience.map((job) => (
+					<Card
+						heading={job.company}
+						subheading={job.position}
+						date={job.date}
+						imagePath={job.imagePath}
+						fullImagePath={job.fullImagePath}
+						altText={job.altText}
+						imageClass={job.imageClass}
+					>
+						<ul class='ml-4 list-disc text-muted-foreground'>
+							{job.description.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</Card>
+				))
+			}
 		</Section>
 
 		<Section title='Education'>
-			<Card
-				heading='Noida Institute of Engineering & Technology'
-				subheading='Computer Science'
-				date='Dec 2020 - June 2024'
-				imagePath='/src/assets/Niet.png'
-				fullImagePath='/src/assets/Niet_full.png'
-				altText='NIET logo'
-				imageClass='h-11 w-auto md:-left-16'
-				marks='Grade : 7.94 / 10'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Gained comprehensive knowledge in computer science fundamentals, software development,
-						and data structures.
-					</li>
-					<li>
-						Participated in various coding competitions and hackathons, securing top positions.
-					</li>
-				</ul>
-			</Card>
-			<Card
-				heading='Pt Deen Dayal Vidyalaya Saraswati Vidya Mandir Inter College'
-				subheading='High School'
-				date='Apr 2017 - Mar 2019'
-				imagePath='/src/assets/pddusvm.png'
-				altText='School logo'
-				imageClass='h-10 w-auto md:-left-16'
-				marks='Grade : 9.40 / 10'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>Excelled in subjects like Mathematics, Physics, and Computer Science.</li>
-					<li>
-						Active member of the school's science club and participated in various inter-school
-						competitions.
-					</li>
-				</ul>
-			</Card>
+			{
+				education.map((school) => (
+					<Card
+						heading={school.institution}
+						subheading={school.degree}
+						date={school.date}
+						imagePath={school.imagePath}
+						fullImagePath={school.fullImagePath}
+						altText={school.altText}
+						imageClass={school.imageClass}
+						marks={school.marks}
+					>
+						<ul class='ml-4 list-disc text-muted-foreground'>
+							{school.description.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</Card>
+				))
+			}
 		</Section>
 
 		<Section title='Projects'>
 			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
-				<ProjectCard
-					href='https://befikarestore.in'
-					heading='Befikarestore'
-					subheading='Full Stack E-commerce Platform'
-					imagePath='/src/assets/befikarestore.png'
-					imagePath='/src/assets/coming-soon.png'
-					altText='Befikarestore'
-					class='w-full sm:w-1/2'
-				/>
-				<ProjectCard
-					href='https://github.com/Yashasewi/spotify-portfolio'
-					heading='Spotify Stats'
-					subheading='Music Analytics App'
-					imagePath='/src/assets/spotify-stats.png'
-					imagePath='/src/assets/coming-soon.png'
-					altText='Spotify Stats'
-					class='w-full sm:w-1/2'
-				/>
+				{
+					projects.map((project) => (
+						<ProjectCard
+							href={project.href}
+							heading={project.title}
+							subheading={project.description}
+							imagePath={project.imagePath}
+							altText={project.altText}
+							class='w-full sm:w-1/2'
+						/>
+					))
+				}
 			</div>
 		</Section>
 
 		<Section title='Open Source'>
-			<!-- <Card
-				as='a'
-				heading='React Flow'
-				subheading='Contribution to node resizing feature'
-				date='May 2023'
-				imagePath='/src/assets/react-flow.png'
-				imagePath='/src/assets/about-astro.png'
-				altText='React Flow logo'
-				imageClass='h-11 w-auto md:-left-16'
-				href='https://github.com/wbkd/react-flow/pull/2784'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Implemented node resizing feature, enhancing the functionality of the React Flow
-						library.
-					</li>
-					<li>
-						Collaborated with maintainers to refine the implementation and ensure compatibility with
-						existing features.
-					</li>
-				</ul>
-			</Card> -->
-			<Card
-				as='a'
-				heading='The Coding Train'
-				subheading='Added dark mode feature to thecodingtrain.com'
-				imagePath='/src/assets/codingtrain.png'
-				altText='Coding Train logo'
-				imageClass='h-10 w-10 md:-left-16 object-contain'
-				href='https://github.com/CodingTrain/thecodingtrain.com/pull/1554'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Implemented dark mode using CSS variables and theming classes for improved user
-						experience.
-					</li>
-					<li>
-						Updated existing styles to ensure seamless adaptation to both light and dark themes.
-					</li>
-					<li>
-						Addressed potential issues and collaborated with the team to ensure feature
-						completeness.
-					</li>
-				</ul>
-			</Card>
-			<Card
-				as='a'
-				heading='PearAI'
-				subheading='Responsive design improvements and bug fixes'
-				date='Month Year'
-				imagePath='/src/assets/pear.png'
-				altText='PearAI logo'
-				imageClass='h-11 w-auto md:-left-16'
-				href='https://github.com/trypear/pear-landing-page/pull/193'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Enhanced website responsiveness for small devices, improving user experience on mobile
-						and tablet screens.
-					</li>
-					<li>
-						Fixed various bugs and made adjustments to the layout and functionality of the site.
-					</li>
-				</ul>
-			</Card>
+			{
+				openSource.map((contribution) => (
+					<Card
+						as='a'
+						heading={contribution.project}
+						subheading={contribution.contribution}
+						date={contribution.date}
+						imagePath={contribution.imagePath}
+						altText={contribution.altText}
+						imageClass={contribution.imageClass}
+						href={contribution.href}
+					>
+						<ul class='ml-4 list-disc text-muted-foreground'>
+							{contribution.description.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</Card>
+				))
+			}
 		</Section>
-		<!-- <Section title='Projects'>
-			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
-				<ProjectCard
-					href='https://www.google.com'
-					heading='Consectetur'
-					subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit.'
-					imagePath='/src/assets/coming-soon.png'
-					altText='Example'
-					class='w-full sm:w-1/2'
-				/>
-				<ProjectCard
-					as='div'
-					heading='Coming soon...'
-					subheading=''
-					imagePath='/src/assets/coming-soon.png'
-					altText='Lorem, ipsum dolor sit'
-					class='w-full sm:w-1/2'
-				/>
-			</div>
-		</Section> -->
 
 		<Section title='Certifications'>
-			<Card
-				as='a'
-				heading='The Bits and Bytes of Computer Networking (Google)'
-				subheading='Learned computer networking, network architecture, network security, and cloud computing.'
-				date='October 23, 2022'
-				altText='The Bits and Bytes of Computer Networking'
-				imageClass='h-11 w-auto md:-left-16'
-				href='https://coursera.org/share/d14020d2d68a111280f4fc82d7d033a7'
-			/>
-			<Card
-				as='a'
-				heading='Developing Cloud Apps with Node.js and React (IBM)'
-				subheading='Create server-side applications with Node.js and Express. Deploy to IBM Cloud. Develop front-end interfaces with React.'
-				date='December 9, 2023'
-				altText='Developing Cloud Apps with Node.js and React'
-				imageClass='h-11 w-auto md:-left-16'
-				href='https://coursera.org/share/a3f8e0b6128d79d49250cfe886d66a45'
-			/>
+			{
+				certifications.map((cert) => (
+					<Card
+						as='a'
+						heading={cert.title}
+						subheading={cert.description}
+						date={cert.date}
+						altText={cert.title}
+						imageClass='h-11 w-auto md:-left-16'
+						href={cert.href}
+					/>
+				))
+			}
 		</Section>
 
 		<Section title='Skills'>
-			<SkillLayout title='Languages' skills={languages} />
-			<SkillLayout title='Frontend' skills={frontend} />
-			<SkillLayout title='Backend' skills={backend} />
-			<SkillLayout title='Others' skills={others} />
+			<SkillLayout title='Languages' skills={skills.languages} />
+			<SkillLayout title='Frontend' skills={skills.frontend} />
+			<SkillLayout title='Backend' skills={skills.backend} />
+			<SkillLayout title='Others' skills={skills.others} />
 		</Section>
 	</div>
 	<!-- <a
