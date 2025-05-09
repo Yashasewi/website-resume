@@ -8,7 +8,6 @@ import ThemeProvider from '@/components/ThemeProvider.astro'
 
 import { siteConfig } from '@/site-config'
 
-import Analytics from '@vercel/analytics/astro'
 interface Props {
 	meta: SiteMeta
 }
@@ -23,8 +22,6 @@ const {
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
 	</head>
 
-	<Analytics />
-	
 	<body class='flex justify-center bg-background'>
 		<ThemeProvider />
 		<main
